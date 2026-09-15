@@ -1,0 +1,6 @@
+test_id,account_type,transfer_amount,expected
+BANK-001,Savings,0,Dashboard displayed
+BANK-002,Savings,1000,Transfer succeeds when balance is sufficient
+BANK-003,Savings,999999999,Insufficient balance validation
+BANK-004,Savings,-100,Invalid amount validation
+BANK-005,Savings,1000,Duplicate submission prevented
