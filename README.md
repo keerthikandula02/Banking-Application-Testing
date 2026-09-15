@@ -1,54 +1,57 @@
-# 💳 Banking Application Testing
+# Banking Application Testing
 
-A manual testing portfolio project covering core retail-banking workflows with emphasis on functional correctness, data validation, security-minded negative testing and transaction integrity.
+Portfolio QA project combining manual testing artifacts, SQL validation, and Selenium + Java automation against the public ParaBank demo application.
 
-## Coverage
-- Login and account access
-- Account balance and statements
-- Fund transfer
-- Beneficiary management
-- Bill payment
-- Transaction history
-- Input validation
-- Session timeout/logout
-- Negative and boundary testing
-- Regression and smoke testing
+## Scope
+- Functional and negative testing of login, account overview, and fund-transfer navigation
+- Test planning, test cases, test data, bug reporting, and SQL validation
+- Selenium WebDriver automation using Java, JUnit 5, Maven, and Page Object Model
 
-## Structure
+## Automation
+The `src/test/java` suite contains smoke scenarios for:
+1. Valid login and account-service availability
+2. Invalid login error handling
+3. Access to the Transfer Funds page
+
+The automation targets the ParaBank demo application: https://parabank.parasoft.com/parabank/index.htm
+
+> Note: ParaBank is a public demo/test application. The automation uses the documented demo credentials `john` / `demo` for portfolio testing. Do not use real banking credentials or real financial data.
+
+## Project Structure
 ```text
 Banking-Application-Testing/
-├── README.md
-├── Test-Cases/Banking_Test_Cases.md
-├── Bug-Reports/Banking_Bug_Reports.md
-├── Test-Data/banking_test_data.csv
-├── Test-Plan/Banking_Test_Plan.md
-└── Screenshots/
-    ├── banking-dashboard.svg
-    ├── fund-transfer.svg
-    └── transaction-history.svg
+├── Bug-Reports/
+├── Screenshots/
+├── SQL/
+├── Test-Cases/
+├── Test-Data/
+├── Test-Plan/
+├── src/test/java/com/keerthi/qa/
+│   ├── BaseTest.java
+│   ├── LoginPage.java
+│   ├── AccountsPage.java
+│   └── BankingSmokeTest.java
+├── pom.xml
+└── .gitignore
 ```
 
-## Screenshots
-![Banking Dashboard](Screenshots/banking-dashboard.svg)
+## Tech Stack
+Java 17 | Selenium WebDriver | JUnit 5 | Maven | SQL | Manual Testing | Page Object Model
 
-![Fund Transfer](Screenshots/fund-transfer.svg)
+## Run Automation
+Prerequisites: JDK 17+, Maven, and Google Chrome.
 
-![Transaction History](Screenshots/transaction-history.svg)
+```bash
+mvn clean test
+```
 
-> Screenshots are portfolio documentation mockups and do not contain real banking/customer information.
+Selenium Manager handles the browser driver setup in current Selenium versions.
 
-## Key Test Scenarios
-| ID | Scenario | Expected |
-|---|---|---|
-| BANK-001 | Valid login | Dashboard displayed |
-| BANK-002 | Invalid beneficiary account | Validation prevents submission |
-| BANK-003 | Transfer within available balance | Transaction succeeds |
-| BANK-004 | Transfer above available balance | Transaction rejected |
-| BANK-005 | Duplicate transfer submission | Duplicate transaction prevented |
-| BANK-006 | Statement date filter | Correct transactions displayed |
-| BANK-007 | Session timeout | User must authenticate again |
+## Manual Testing Artifacts
+- Test cases for banking workflows
+- Test plan and test data
+- Sample bug reports
+- SQL queries for transaction/balance validation
+- UI reference screenshots
 
-## Tools
-Manual Testing • Test Case Design • Bug Reporting • SQL concepts • Browser DevTools
-
-**Author:** Keerthi Kandula
+This repository is a portfolio project designed to demonstrate QA test design, automation structure, SQL validation, and defect documentation.
